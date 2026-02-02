@@ -1,0 +1,2410 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #010101e0;
+    color: #d2d4d7fd;
+    line-height: 1.6;
+    padding: 20px;
+    font-weight: 400;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+/* Tela cheia do carregamento */
+#loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #0a0a0a; /* Cor de fundo do seu site */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Fica acima de tudo */
+    transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+/* O círculo animado */
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #1a1a1a;
+    border-top: 5px solid #0f67d2; /* Cor azul do seu gráfico */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+#loader-container p {
+    color: white;
+    font-family: sans-serif;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Classe para esconder o loader via JS */
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+/* --- Navegação Corrigida --- */
+
+.navegacao {
+   
+    box-sizing: border-box;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.5rem 2rem; /* Adicionado um padding lateral */
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; /* Centraliza os 5 links no meio */
+    align-items: center;
+    position: relative;     /* Necessário para o Início se posicionar em relação a ele */
+    max-width: 1200px;      /* Limita a largura para telas muito grandes */
+}
+
+/* Estilo específico para o INÍCIO ficar na esquerda */
+.menu li:first-child {
+    position: absolute;
+    left: 0;
+}
+
+.menu li {
+    margin: 0 15px; /* Espaçamento entre os 5 links centrais */
+}
+
+li a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #f1dcdc;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+/* --- Efeitos e Outros Elementos --- */
+
+.link_menu::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #0f67d2;
+    transition: width 0.5s;
+}
+
+.link_menu:hover::after {
+    width: 100%;
+}
+
+main {
+    margin-top: 80px; /* Espaço para a navegação fixa */
+    
+}
+
+/* Posiciona a seção de introdução no lado esquerdo da viewport */
+main.INTRODUÇÃO {
+    position: absolute;
+    top: 0; /* aproximado do topo */
+    left: 5%;
+    max-width: 600px;
+    width: 45%;
+}
+
+/* Responsivo: em telas pequenas, deixa o conteúdo centralizado */
+@media (max-width: 800px) {
+    main.INTRODUÇÃO {
+        position: static;
+
+    }
+
+@media (max-width: 480px) {
+    .logo { font-size: 36px; letter-spacing: 4px; }
+    .content h1 { font-size: 1.6rem; }
+    .button321, .btn-get-startedd, .btn-watch-tutorial { padding: 0.8rem; }
+    main  {
+        position: static;
+        width: 100%;
+        max-width: none;
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+}
+}
+
+
+#inicio {
+    display: none;
+}
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative; /* allow absolute positioning for per-section login button */
+}
+
+.formulario {
+     display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 300px;
+    margin-top: -10px;
+
+}
+.formulario input {
+    width: 200px;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    color: #ddd7d7;
+}
+/* No seu código, procure e remova/comente a linha 'left' */
+.formulario label {
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    /* left: 500px;   <--- REMOVA ISSO */
+    width: auto; /* Deixe automático para caber no novo layout */
+}
+
+select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    color: #ddd7d7;
+    font-size: 1rem;
+    background-color: transparent;
+}
+/* Layout Principal (Lado a Lado) */
+.dashboard-financeiro {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px; /* Aumentado para caber as 3 colunas internas */
+    margin: 0 auto;
+}
+
+.coluna-financas {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #0f67d255;
+}
+
+/* A Grade de 3 Colunas Internas */
+.grid-tabela {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* CRIA AS 3 COLUNAS */
+    gap: 15px; /* Espaço entre as células da "tabela" */
+    align-items: end;
+}
+
+/* Organiza Label acima do Input dentro da célula */
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Faz o botão ocupar as 3 colunas lá embaixo */
+.btn-enviar-grid {
+    grid-column: span 3; 
+    margin-top: 15px;
+    padding: 10px;
+    background: #0f67d2;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.grid-tabela input {
+    width: 100%;
+    padding: 8px;
+    background: #111;
+    border: 1px solid #333;
+    color: #fff;
+    border-radius: 4px;
+}
+
+/* Responsividade: No Celular vira tudo uma coluna só */
+@media (max-width: 1100px) {
+    .grid-tabela {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em tablets */
+    }
+    .btn-enviar-grid { grid-column: span 2; }
+}
+
+@media (max-width: 768px) {
+    .dashboard-financeiro { flex-direction: column; }
+    .grid-tabela { grid-template-columns: 1fr; } /* 1 coluna no celular */
+    .btn-enviar-grid { grid-column: span 1; }
+}
+.valor_finalS {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #9fa4b4fd;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.financeira {
+    position: none;
+    z-index: 20;
+    
+}
+
+
+.img_gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.5;
+}
+.layer_blur {
+   height: 0;
+    width: 30rem;
+    position: absolute;
+    top: 20%;
+    right: 0;
+    box-shadow: 0 0 700px 15px white;
+    rotate: -30deg;
+    z-index: -1;
+}
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@300&display=swap');
+
+/* Página em fluxo normal (não centralizar tudo) - facilita responsividade */
+body {
+    background-color: #0a0a0c; /* Fundo escuro para destacar a logo */
+    margin: 0;
+}
+
+.logo-container {
+    text-align: center;
+    position: relative;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 80px;
+    font-weight: 700;
+    letter-spacing: 12px;
+    margin: 0;
+    position: relative;
+    
+    /* Cria o efeito de gradiente no texto */
+    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 50%, #8e2de2 100%);
+    background-clip: text;  
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Brilho externo */
+    filter: drop-shadow(0 0 15px rgba(0, 210, 255, 0.3));
+    transition: all 0.4s ease;
+}
+
+.logo:hover {
+    filter: drop-shadow(0 0 25px rgba(142, 45, 226, 0.6));
+    transform: scale(1.05);
+}
+
+.subtitle {
+    font-family: 'Inter', sans-serif;
+    color: #555;
+    font-size: 14px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    display: block;
+    margin-top: -10px;
+}
+.header2 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* Fixa o botão no canto superior direito */
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 1.5rem 2rem;
+    z-index: 200;
+}
+
+.button321 {
+    margin: 0;
+    padding: 8px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: #0101014e;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #f1dcdc;
+    border: 1px solid #0f67d2;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s ease; /* Transição suave */
+    text-decoration: none;
+}
+
+/* Animação ao passar o mouse */
+.button321:hover {
+    background-color: #0f67d2;
+    box-shadow: 0 0 20px rgba(15, 103, 210, 0.6);
+    transform: translateY(-2px);
+}
+
+/* ANIMAÇÃO QUANDO CLICA (Aqui está o segredo) */
+.button321:active {
+    transform: scale(0.95); /* O botão "encolhe" levemente ao clicar */
+    background-color: #062993;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+#inicio {
+    display: none; /* Mantido para controle do JS */
+   /
+}
+#inicio.financeira {
+    display: none; /* Mantido para controle do JS */
+    min-height: auto;
+    padding: 20px;
+    max-width: 500px; /* Reduzi um pouco para ficar mais compacto */
+    
+    /* MOVER PARA A ESQUERDA */
+    margin: 80px 0 80px 5%; /* Topo: 80px, Direita: 0, Baixo: 80px, Esquerda: 5% */
+    
+    overflow: visible; /* Garante que não apareçam barras de rolagem na seção */
+    background: transparent; /* Remova se quiser que o fundo seja visível */
+}
+
+/* Ajuste do texto de descrição */
+#inicio .description {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    
+    /* REMOVER ROLAGEM INTERNA */
+    max-height: none;   /* Remove o limite de altura */
+    overflow-y: visible; /* O texto flui naturalmente na página */
+}
+
+/* Ajustar a logo KLLD */
+#inicio .logo {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+/* Ajustar o título principal */
+#inicio h1 {
+    font-size: 1.6rem;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+/* Imagem de fundo */
+.img_gradient {
+    position: absolute; /* Deixa a imagem atrás do texto */
+    z-index: -1;
+    max-width: 100%;
+    opacity: 0.3;
+}
+#financas{
+    display: none; /* oculto por padrão, controlado pelo JS */
+    position: absolute;
+    top: 60px; /* abaixo da nav fixa */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 900px;
+    padding: 1rem;
+    box-sizing: border-box;
+    text-align: center; /* centra texto e elementos inline */
+}
+
+/* Quando a seção for ativada (adicionar .show via JS), exibe e centraliza blocos internos */
+#financas.show,
+#financas.active {
+    display: block;
+}
+
+#financas.show > *,
+#financas.active > * {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Formularios e conteúdo ficam com largura limitada e centralizados */
+#financas .formulario,
+#financas .content {
+    max-width: 600px;
+    width: 100%;
+}
+
+
+/* Ajustar os botões */
+.buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center; /* centraliza os botões dentro do contêiner */
+    align-items: center;
+    flex-wrap: nowrap; /* mantém os botões em linha em telas maiores */
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .buttons { flex-wrap: wrap; gap: 0.5rem; }
+}
+
+.btn-get-startedd {
+    display: inline-block;
+    text-decoration: none;
+    border: 1px solid #0f67d2;
+    padding: 0.7rem 1.2rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+    background: transparent;
+    text-align: center;
+    line-height: 1;
+    transition: background-color 0.25s, color 0.25s, box-shadow 0.25s;
+}
+.btn-get-startedd:hover {
+    background-color: #0f67d2;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(15, 103, 210, 0.6);
+}
+.btn-watch-tutorial {
+    
+    display: inline-block;
+    text-decoration: none;
+    border: 1px solid #4b80c0;
+    padding: 0.7rem 1.2rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+    background: transparent;
+    text-align: center;
+    line-height: 1;
+    transition: background-color 0.25s, color 0.25s, box-shadow 0.25s;
+}
+.btn-watch-tutorial:hover {
+    background-color: #586d86;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(15, 103, 210, 0.6);
+}
+.tag-box{
+    position: relative;
+    width: 18rem;
+    height: 2.5rem;
+    border-radius: 50px;
+    background: linear-gradient(to right, #062993, #0f67d2, #062993, #f357eb, #411e9b);
+    background-size: 200%;
+    animation: animatedBackground 2.5s linear infinite;
+    box-shadow: 0 0 15px rgba(63, 63, 63, 0.5);
+}
+@keyframes animatedBackground {
+    to {
+        background-position: 200%;
+    }
+}
+.tag-box .teg{
+    position: absolute;
+    inset: 3px 3px 3px 3px ;
+    background-color: #010101e0;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    transition: 0.5s ease;
+    cursor: pointer;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #d2d4d7fd;
+    
+}
+.tag-box .teg:hover{
+    background-color: #062993e0;
+    box-shadow: 0 0 10px rgba(6, 41, 147, 0.5);
+}
+.content h1{
+    font-size: 4rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin: 2rem 0;
+    line-height: 1.2;
+    text-shadow: #585353e0;
+
+}
+.description{
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+    max-width: 35rem;
+    color: gray;
+}
+.robo-3d {
+    /* Nota: tamanho do robô ajustado aqui. Para aumentar/diminuir,
+       edite `width` e `max-width` abaixo (ex.: 62vw / 1250px). */
+    position: fixed; /* fixa na viewport */
+    top: 10vh; /* um pouco abaixo do topo */
+    right: -10%; /* empurra mais para a direita (parcialmente fora da viewport) */
+    width: 100vw; /* aumentado levemente — editar este valor para alterar tamanho */
+    max-width: 1250px; /* limite máximo em pixels */
+    height: auto;
+    z-index: 10; /* acima do conteúdo para cobrir marca */
+    pointer-events: auto; /* permite interação, remova se quiser desabilitar */
+    display: block;
+    transition: opacity 0.8s ease-in-out; /* Faz ele aparecer suavemente */
+    
+}
+/* Ajustes para telas menores * TABLET */
+@media (max-width: 1300px) {
+ header{
+    padding: 1rem 0.5rem;
+ }
+ .content {
+    margin: top 85%; ;
+    
+
+ }
+    .robo-3d {
+        padding: fixed;
+       scale: 0.8;
+       top: 20vh;
+       right: 2%;
+       right:-40%;
+       width: 130vw;
+    }
+}
+ .conteiner{
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 0  5px 15px rgba(0,0,0,0.35);
+    position:relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    display: none; /* hidden by default; shown when .active is added */
+ }
+ .conteiner p{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px 0 ;            
+ }
+
+ .conteiner span{
+    font-size: 12px;
+     
+ }
+
+ .conteiner a{
+   color:#333;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
+ }
+.conteiner button{ 
+
+    background-color: #1b5fce;
+    color:#fff;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+
+}
+.conteiner button.hidden{
+    background-color: transparent;
+    border-color: #fff;
+
+}
+
+.conteiner form{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+}
+.conteiner input{
+
+    background-color: #f0f0f0;
+    border: none;
+    margin: 8px 0;
+    padding: 12px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+    
+}
+
+.form-conteiner{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sing-in{
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.conteiner.active .sing-in{
+    transform: translateX(100%);
+}
+
+.sing-up{
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+    display: none;
+}
+.conteiner.active .sing-up{
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    display: block;
+    animation: move 0.6s;
+}
+@keyframes move{
+    0%,49.99%{
+        opacity: 0;
+        z-index: 1;
+    }
+    50% , 100%{
+        opacity: 1;
+        z-index: 5;
+    }
+}  
+
+.social-icons{
+    margin: 20px 0;
+
+}  
+
+.social-icons a{
+    border: 1px solid #ccc;
+    border-radius: 20%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 3px;
+    height: 40px;
+    width: 40px;
+}
+
+.toggle-conteiner{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 150px 0 0 100px;
+    z-index: 100;
+}
+
+.conteiner.active .toggle-conteiner{
+    transform: translateX(-100%);
+     border-radius:  0 150px 100px  0; 
+}
+
+.toggle{
+    background-color: #1b5fce;
+    background: linear-gradient( to right ,rgb(82, 150, 210),rgb(102, 161, 213));
+    color:#fff;
+    position: absolute;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.conteiner.active .toggle{
+    transform: translateX(50%);
+}
+
+/* Show the container when active (triggered via JS) */
+/* Use `.open` to control visibility, `.active` switches panels */
+.conteiner.open{
+    display: block;
+    position: fixed; /* overlay the viewport */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; /* above nav and other sections */
+    /* ensure it appears above any fixed elements */
+}
+
+/* backdrop behind the auth container when open */
+/* Dedicated backdrop element shown behind the auth container */
+.auth-backdrop{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.25); /* lighter than before */
+    z-index: 9998; /* behind the container but above page content */
+    transition: opacity 180ms ease;
+    opacity: 0;
+}
+.auth-backdrop.visible{
+    display: block;
+    opacity: 1;
+}
+
+/* Ensure the container accepts pointer events */
+.conteiner.open{
+    pointer-events: auto;
+}
+
+.toggle-panel {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.toggle-left{
+    transform: translateX(-200%);
+}
+ 
+.conteiner.active  .toggle-left{
+    transform: translateX(0);
+}
+
+.toggle-right{
+    right: 0;
+    transform: translateX(0);
+}
+
+.conteiner.active  .toggle-right{
+    transform: translateX(200%);
+}
+.foto{
+    width: 800px;
+    height: 900px;
+    z-index: -1;
+    position: absolute;
+    left: -100px;
+    top: -50px;
+    opacity: 0.2;
+   
+    
+}
+
+/* Small per-section login button */
+.open-login-section {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    background-color: rgba(1,1,1,0.6);
+    color: #f1dcdc;
+    border: 1px solid #0f67d2;
+    cursor: pointer;
+    z-index: 250;
+}
+.open-login-section:hover{
+    background-color: #0f67d2;
+}
+
+/* Modal para Gráfico em Tela Cheia */
+.grafico-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.grafico-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    height: 80%;
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(15, 103, 210, 0.3);
+}
+
+.grafico-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 10001;
+    transition: color 0.2s ease;
+}
+
+.grafico-modal-close:hover {
+    color: #0f67d2;
+}
+
+#graficoModal-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.financeira {
+    padding: 2rem;
+}
+.true-slap{
+    position: relative;
+    max-width: 50rem;
+    margin: 0%;
+    left: 5%;
+}
+.slap{
+    display: flex;
+    aspect-ratio: 18/9;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 4%, 27%, 0.25);
+    border-radius: 0.5rem;
+}
+.slap img {
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+}
+.slap-nav {
+    display: flex;
+    column-gap: 1rem;
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+.slap-nav a {
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 50%;
+    background-color: hsla(220, 8%, 15%, 0.863);
+    opacity: 0.75;
+    transition: opacity ease 250ms;
+}
+.slap-nav a:hover{
+    opacity: 1;
+}
+/* Esconde a barra no Chrome, Safari e novas versões do Edge */
+.slap::-webkit-scrollbar {
+    display: none;
+}
+
+/* Esconde a barra no Firefox e IE/Edge antigo */
+.slap {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.imagem1, .imagem2, .imagem3 {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    opacity: 0.5;
+}
+.dashboard-financeiro {
+    display: flex;
+    flex-wrap: wrap;       /* Isso faz as colunas ficarem lado a lado e pularem linha */
+    justify-content: center;
+    gap: 15px;             /* Espaço entre as colunas */
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.coluna-financas {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(15, 103, 210, 0.3);
+    border-radius: 15px;
+    padding: 15px;
+    width: 250px;          /* Largura fixa pequena para não espalhar */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.coluna-financas label {
+    font-size: 11px;       /* Texto bem pequeno */
+    color: #ccc;
+    text-align: left;
+}
+
+.coluna-financas input {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #444;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.mini-status {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #00ff88;
+}
+.mini-status2 {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #ff4444;
+}
+
+.chart-box {
+    width: 400px; /* Gráfico um pouco maior que os inputs */
+    min-height: 250px;
+}
+#btn-reset {
+    background: rgba(255, 77, 77, 0.2);
+    border: 1px solid rgba(255, 77, 77, 0.5);
+    color: #ff4d4d;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+#btn-reset:hover {
+    background: rgba(255, 77, 77, 0.4);
+    transform: scale(1.05);
+}
+.btn-voltar {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #aaa;
+    font-size: 10px;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-voltar:hover {
+    background: rgba(255, 165, 0, 0.2); /* Laranja suave ao passar o mouse */
+    color: white;
+}
+.enviarfatura{
+    background: #368bf4;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+.enviarfatura:hover {
+    background-color: #0d52a8;
+}
+.enviardivida{
+    background: #f46836;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+.enviardivida:hover {
+    background-color: #d9534f;
+}
+.dia{
+    background-color: #3a7bd5;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+.dia:hover {
+    background-color: #0d52a8;
+}
+.semana{
+    background-color: #3a7bd5;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+.semana:hover {
+    background-color: #0d52a8;
+}
+.mes{
+    background-color: #3a7bd5;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+.mes:hover {
+    background-color: #0d52a8;
+}
+.conteiner {
+    position: fixed;      /* Fixa na tela, independente do scroll */
+    top: 50%;             /* Alinha o topo no meio */
+    left: 50%;            /* Alinha a esquerda no meio */
+    transform: translate(-50%, -50%); /* Move de volta metade do próprio tamanho para centralizar */
+    z-index: 9999;        /* Garante que fique acima de tudo */
+    display: none;        /* Começa escondido */
+    /* Seus estilos de largura, sombra e cor mantêm-se iguais */
+}
+/* Estilização da Seção Investimentos */
+#investimentos {
+    padding: 40px;
+    color: white;
+}
+
+.invest-header h2 {
+    font-size: 2.5rem;
+    color: #0f67d2;
+    text-shadow: 0 0 10px rgba(15, 103, 210, 0.5);
+}
+
+.invest-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+/* Galeria de Imagens */
+.invest-gallery {
+    flex: 1;
+    min-width: 300px;
+}
+
+.img-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.img-inv {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 2px solid rgba(15, 103, 210, 0.3);
+    transition: transform 0.3s;
+}
+
+.img-inv:hover {
+    transform: scale(1.05);
+    border-color: #0f67d2;
+}
+
+/* Card do Formulário Glassmorphism */
+.invest-card {
+    flex: 1.5;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    color: #aaa;
+}
+
+.input-group input, .input-group select {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #0f67d2;
+    box-shadow: 0 0 8px rgba(15, 103, 210, 0.4);
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+/* Botão Estilizado */
+.btn-invest {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px;
+    background: linear-gradient(45deg, #0f67d2, #004da8);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-invest:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(15, 103, 210, 0.4);
+}
+
+/* Lista de Resultados */
+.invest-list-container {
+    position: sticky;
+    top: 100px;
+    left: 0;
+    width: 280px;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 20px;
+    border-radius: 15px;
+    float: left;
+    margin-right: 20px;
+}
+
+/* Esconde a barra de rolagem */
+.invest-list-container::-webkit-scrollbar {
+    display: none;
+}
+
+.invest-list-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.invest-list-container h3 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.invest-grid-results {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Estilo de cada investimento adicionado */
+.invest-item-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #0f67d2;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+    animation: fadeIn 0.5s ease;
+}
+
+.invest-item-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.02);
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-info strong {
+    color: #0f67d2;
+    font-size: 1.1rem;
+}
+
+.card-info span {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.card-info small {
+    color: #aaa;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin-top: 5px;
+}
+
+.btn-delete {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Layout Zig-Zag */
+.lazer-showcase {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 100px;
+    padding: 20px;
+}
+
+/* Quando tiver a classe 'reverse', a foto vai para a esquerda */
+.lazer-showcase.reverse {
+    flex-direction: row-reverse;
+}
+
+.lazer-photo-big {
+    flex: 1.2;
+    height: 450px;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    border: 1px solid rgba(15, 103, 210, 0.4);
+}
+
+.lazer-photo-big img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.lazer-photo-big:hover img {
+    transform: scale(1.08);
+}
+
+.lazer-text {
+    flex: 0.8;
+}
+
+.lazer-text h3 {
+    font-size: 2.8rem;
+    color: #0f67d2;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.lazer-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #dfdfdf;
+}
+
+/* Estilo dos Inputs */
+.lazer-dashboard {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border-radius: 35px;
+    padding: 50px;
+    margin-top: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lazer-inputs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.input-field label {
+    display: block;
+    margin-bottom: 10px;
+    color: #0f67d2;
+    font-weight: bold;
+}
+
+.input-field input, .input-field select {
+    width: 100%;
+    padding: 15px;
+    background: #000;
+    border: 1px solid #333;
+    border-radius: 12px;
+    color: #fff;
+}
+
+.btn-lazer-action {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(90deg, #0f67d2, #004da8);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.btn-lazer-action:hover {
+    box-shadow: 0 0 30px rgba(15, 103, 210, 0.6);
+    transform: translateY(-3px);
+}
+/* Layout Principal Zig-Zag */
+.lazer-showcase {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+/* Inverte apenas o segundo bloco: Foto na esquerda */
+.lazer-showcase.reverse {
+    flex-direction: row-reverse;
+}
+
+.lazer-text { flex: 1; }
+.lazer-photo-big {
+    flex: 1.5; /* Foto maior que o texto */
+    height: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.lazer-photo-big img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Dashboard Inferior Assimétrico */
+.lazer-dashboard-container {
+    display: grid;
+    grid-template-columns: 300px 1fr; /* 300px fixo para o form, o resto para a lista */
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.lazer-form-small {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(15, 103, 210, 0.3);
+    height: fit-content; /* Ocupa apenas o espaço necessário */
+}
+
+.input-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.field label {
+    font-size: 0.8rem;
+    color: #0f67d2;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.field input, .field select {
+    width: 100%;
+    background: #111;
+    border: 1px solid #333;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.btn-lazer-save {
+    background: #0f67d2;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+/* Configuração do Grid para Inputs na Esquerda e Lista na Direita */
+.lazer-dashboard-container {
+    display: grid;
+    grid-template-columns: 300px 1fr; /* 300px para o form, o resto para a lista */
+    gap: 50px;
+    margin-top: 50px;
+    align-items: start;
+}
+
+/* Deixa o formulário menor e elegante */
+.lazer-form-small {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid rgba(15, 103, 210, 0.3);
+}
+
+.input-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Estilo dos blocos de imagem e texto */
+.lazer-showcase {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.lazer-showcase.reverse {
+    flex-direction: row; /* Mantém a ordem do HTML no segundo bloco também se você inverter as divs manualmente */
+}
+
+.lazer-photo-big {
+    flex: 1.5;
+    height: 400px;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.lazer-photo-big img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Container principal do Dashboard */
+.lazer-dashboard-container {
+    display: grid;
+    grid-template-columns: 350px 1fr; /* Coluna fixa na esquerda, resto livre na direita */
+    gap: 30px;
+    margin-top: 50px;
+}
+
+/* Coluna que agrupa Form e Respostas */
+.lazer-left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Espaço entre o formulário e a lista de respostas */
+}
+
+/* Estilo do Formulário (Pequeno) */
+.lazer-form-small {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid rgba(15, 103, 210, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+/* Estilo da Div de Respostas (Na esquerda) */
+.lazer-history-left {
+    padding: 10px;
+    border-top: 2px solid rgba(15, 103, 210, 0.2);
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Esconde a barra de rolagem */
+.lazer-history-left::-webkit-scrollbar {
+    display: none;
+}
+
+.lazer-history-left {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#listaLazeres {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Estilo dos itens que aparecem na lista */
+.lazer-item-card {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 15px;
+    border-radius: 12px;
+    border-left: 4px solid #0f67d2;
+    font-size: 0.9rem;
+}
+
+/* Manter o estilo dos inputs pequeno */
+.input-stack .field input, 
+.input-stack .field select {
+    width: 100%;
+    background: #000;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+}
+.lazer-item-card {
+    background: rgba(255, 255, 255, 0.07);
+    padding: 15px;
+    border-radius: 12px;
+    border-left: 4px solid #0f67d2;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.card-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.card-info strong { color: #0f67d2; }
+
+.card-details {
+    display: flex;
+    gap: 15px;
+    opacity: 0.7;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+}
+
+.card-note {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: #bbb;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 5px;
+}
+
+.btn-del {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    font-size: 0.7rem;
+    margin-top: 10px;
+    padding: 0;
+}
+
+/* ===== RESPONSIVIDADE PARA DISPOSITIVOS MÓVEIS E TABLETS ===== */
+
+/* Tablets (768px até 1024px) */
+@media (max-width: 1024px) {
+    body {
+        padding: 10px;
+    }
+
+    .header {
+        padding: 15px 10px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+    }
+
+    .button321 {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .invest-list-container {
+        width: 250px;
+        max-height: 300px;
+        padding: 15px;
+    }
+
+    .invest-container {
+        flex-direction: column;
+    }
+
+    .invest-gallery,
+    .invest-card {
+        width: 100%;
+    }
+
+    .dashboard-financeiro {
+        flex-direction: column;
+    }
+
+    .coluna-financas {
+        width: 100%;
+    }
+
+    .lazer-dashboard-container {
+        flex-direction: column;
+    }
+
+    .lazer-left-column,
+    .lazer-right-space {
+        width: 100%;
+    }
+
+    h2, h3 {
+        font-size: 20px;
+    }
+
+    label {
+        font-size: 13px;
+    }
+
+    input, select, textarea {
+        font-size: 14px;
+    }
+}
+
+/* Celulares pequenos (até 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+
+    .header {
+        padding: 10px 8px;
+    }
+
+    .header2 {
+        margin-left: auto;
+    }
+
+    .button321 {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .menu {
+        gap: 5px;
+    }
+
+    .link_menu {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .invest-list-container {
+        width: 100%;
+        position: static;
+        float: none;
+        max-height: 250px;
+        margin-bottom: 20px;
+    }
+
+    .invest-container {
+        flex-direction: column;
+    }
+
+    .invest-gallery {
+        display: none;
+    }
+
+    .invest-card {
+        width: 100%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .input-group {
+        width: 100%;
+    }
+
+    .dashboard-financeiro {
+        flex-direction: column;
+    }
+
+    .coluna-financas {
+        width: 100%;
+        max-height: 50vh;
+    }
+
+    .lazer-dashboard-container {
+        flex-direction: column;
+    }
+
+    .lazer-left-column {
+        width: 100%;
+    }
+
+    .lazer-history-left {
+        max-height: 250px;
+        padding: 8px;
+    }
+
+    .lazer-form-small {
+        padding: 12px;
+    }
+
+    .lazer-showcase {
+        flex-direction: column;
+    }
+
+    .lazer-showcase.reverse {
+        flex-direction: column-reverse;
+    }
+
+    .lazer-text h3 {
+        font-size: 16px;
+    }
+
+    .lazer-text p {
+        font-size: 13px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    p, label, span {
+        font-size: 12px;
+    }
+
+    input, select, textarea {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    button {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .btn-invest,
+    .btn-lazer-save,
+    .enviarfatura,
+    .enviardivida,
+    .btn-voltar {
+        padding: 8px 12px;
+        font-size: 12px;
+        width: 100%;
+    }
+
+    .conteiner {
+        width: 95vw;
+        max-width: 400px;
+    }
+
+    .form-conteiner {
+        width: 100%;
+    }
+
+    .toggle-conteiner {
+        display: none;
+    }
+
+    .img-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .img-inv {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Esconde imagens grandes em celulares */
+    .imagem1, .imagem2, .imagem3,
+    .imagem9, .imagem10, .imagem11,
+    .imagem12, .imagem13, .imagem14, .imagem15 {
+        max-height: 150px;
+    }
+
+    .robo-3d {
+        display: none;
+    }
+
+    .invest-grid-results,
+    #listaLazeres,
+    #listaImoveis,
+    #listaAutomoveis {
+        gap: 10px;
+    }
+
+    .item-salvo {
+        padding: 8px;
+        font-size: 11px;
+        flex-direction: column;
+    }
+}
+
+/* Celulares médios (481px até 767px) */
+@media (max-width: 767px) and (min-width: 481px) {
+    body {
+        padding: 10px;
+    }
+
+    .header {
+        padding: 12px 10px;
+    }
+
+    .button321 {
+        padding: 7px 13px;
+        font-size: 13px;
+    }
+
+    .invest-list-container {
+        width: 100%;
+        position: static;
+        float: none;
+        max-height: 280px;
+        margin-bottom: 20px;
+    }
+
+    .invest-container {
+        flex-direction: column;
+    }
+
+    .invest-gallery {
+        width: 100%;
+    }
+
+    .invest-card {
+        width: 100%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .dashboard-financeiro {
+        flex-direction: column;
+    }
+
+    .coluna-financas {
+        width: 100%;
+    }
+
+    .lazer-left-column {
+        width: 100%;
+    }
+
+    .lazer-history-left {
+        max-height: 280px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 17px;
+    }
+
+    input, select, textarea {
+        font-size: 13px;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+
+    .conteiner {
+        width: 90vw;
+    }
+
+    .robo-3d {
+        max-width: 300px;
+    }
+}
+
+/* ===== LAYOUT ÚNICO PARA IMÓVEIS ===== */
+#imoveis {
+    padding: 40px;
+    color: white;
+}
+
+#imoveis .invest-header h2 {
+    font-size: 2.5rem;
+    color: #0f67d2;
+    text-shadow: 0 0 10px rgba(15, 103, 210, 0.5);
+}
+
+.property-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.property-form-section {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.property-form-section h3 {
+    font-size: 1.5rem;
+    color: #0f67d2;
+    margin-bottom: 20px;
+}
+
+.property-gallery-section {
+    padding: 30px;
+}
+
+.property-gallery-section h3 {
+    font-size: 1.5rem;
+    color: #0f67d2;
+    margin-bottom: 20px;
+}
+
+.property-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.property-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    height: 250px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.property-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(15, 103, 210, 0.3);
+}
+
+.property-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.property-card:hover .property-img {
+    transform: scale(1.1);
+}
+
+.property-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    padding: 20px 15px 15px;
+    color: white;
+    transform: translateY(30px);
+    transition: transform 0.3s;
+}
+
+.property-card:hover .property-info {
+    transform: translateY(0);
+}
+
+.property-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #0f67d2;
+}
+
+.property-info p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #ddd;
+}
+
+/* ===== LAYOUT ÚNICO PARA AUTOMÓVEIS ===== */
+#automoveis {
+    padding: 40px;
+    color: white;
+}
+
+#automoveis .invest-header h2 {
+    font-size: 2.5rem;
+    color: #0f67d2;
+    text-shadow: 0 0 10px rgba(15, 103, 210, 0.5);
+}
+
+.car-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.car-gallery-section {
+    padding: 30px;
+}
+
+.car-gallery-section h3 {
+    font-size: 1.5rem;
+    color: #0f67d2;
+    margin-bottom: 20px;
+}
+
+.car-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.car-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    height: 250px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.car-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(15, 103, 210, 0.3);
+}
+
+.car-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.car-card:hover .car-img {
+    transform: scale(1.1);
+}
+
+.car-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    padding: 20px 15px 15px;
+    color: white;
+    transform: translateY(30px);
+    transition: transform 0.3s;
+}
+
+.car-card:hover .car-info {
+    transform: translateY(0);
+}
+
+.car-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #0f67d2;
+}
+
+.car-info p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #ddd;
+}
+
+.car-form-section {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.car-form-section h3 {
+    font-size: 1.5rem;
+    color: #0f67d2;
+    margin-bottom: 20px;
+}
+
+/* Responsivo para tablets e celulares */
+@media (max-width: 1024px) {
+    .property-container,
+    .car-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .property-form-section,
+    .property-gallery-section,
+    .car-form-section,
+    .car-gallery-section {
+        padding: 15px;
+    }
+
+    .property-img,
+    .car-img {
+        height: 150px;
+    }
+}
+
+/* ======== MODAL RECUPERAR SENHA ======== */
+.modal-recuperar-senha {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.modal-recuperar-conteudo {
+    position: relative;
+    background-color: #0a0a0a;
+    color: #d2d4d7fd;
+    padding: 32px;
+    border-radius: 12px;
+    border: 1px solid #444;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+    max-width: 450px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-fechar {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #d2d4d7fd;
+    cursor: pointer;
+    padding: 4px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.modal-fechar:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.modal-recuperar-conteudo h2 {
+    color: #00ff88;
+    margin-bottom: 8px;
+    font-size: 22px;
+}
+
+.modal-recuperar-conteudo p {
+    color: #d2d4d7fd;
+}
+
+.modal-recuperar-conteudo strong {
+    color: #0f67d2;
+}
+
+@media (max-width: 768px) {
+    .modal-recuperar-conteudo {
+        max-width: 95%;
+        padding: 24px;
+    }
+}
+.calc-container {
+    position: fixed;
+    top: 80px; /* Abaixo do seu header */
+    right: 20px;
+    width: 280px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 9999;
+    display: none; /* Escondida inicialmente */
+    flex-direction: column;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+.calc-header {
+    background: linear-gradient(90deg, #00c6ff, #0072ff); /* Cor tecnológica */
+    color: white;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.calc-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.calc-display input {
+    width: 100%;
+    background: #000;
+    border: none;
+    color: #00ff88; /* Verde neon estilo terminal */
+    text-align: right;
+    padding: 20px;
+    font-size: 24px;
+    outline: none;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #333;
+}
+
+.calc-buttons button {
+    padding: 18px;
+    border: none;
+    background: #222;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.calc-buttons button:hover {
+    background: #333;
+}
+
+.btn-op { color: #00c6ff !important; font-weight: bold; }
+.btn-tool { color: #ff4b2b !important; }
+.btn-equal { 
+    grid-row: span 2; 
+    background: #0072ff !important; 
+}
+.btn-zero { grid-column: span 2; }
+/* Botão de abrir Calculadora */
+button[onclick="abrirCalculadora()"] {
+    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 114, 255, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+button[onclick="abrirCalculadora()"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 114, 255, 0.5);
+    filter: brightness(1.1);
+}

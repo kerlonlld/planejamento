@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portal de planejamento e organização">
+    <title>planilia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div id="loader-container">
+    <div class="loader"></div>
+    <p>Carregando <h1 class="logo" data-text="KLLD">KLLD</h1>
+    <span class="subtitle" >TECHNOLOGY</span>...</p>
+</div>
+<header class="header">
+  <nav class="navegacao">
+    <ul class="menu">
+      
+      <li class="inicio_menu">
+       <a href="#" class="link_menu " data-aos="fade-down" data-aos-duration="2000" onclick="showSection('inicio')">inicio</a>
+       
+      </li>
+
+      <div class="dropdown"></div>
+      <li class="financeiras_emnu" data-aos="fade-down" data-aos-duration="1500">
+      
+        <a  href="#" class="link_menu"  onclick="showSection('financas')" >finanças</a>
+      </li>
+      <li data-aos="fade-down" data-aos-duration="2000">
+        <a href="#" class="link_menu"  onclick="showSection('investimentos')" >investimentos</a>
+      </li>
+      <li data-aos="fade-down" data-aos-duration="2500">
+        <a href="#" class="link_menu"  onclick="showSection('lazer')" >lazer</a>
+      </li>
+      <li data-aos="fade-down" data-aos-duration="3000">
+        <a href="#" class="link_menu" onclick="showSection('imoveis')" >imóveis</a>
+      </li>
+      <li data-aos="fade-down" data-aos-duration="3000" >
+          <a href="#" class="link_menu"  onclick="showSection('automoveis')" >automóveis</a>
+        </div>
+     </li>
+    </ul>
+  </nav>
+  <div class="header2">
+                        
+                      
+                          <button class="button321" data-aos="fade-down" data-aos-duration="1500" onclick="abrirLogin()"> Login </button> <br>
+                     </div>
+</header>
+    
+     <main class="financeiras">
+        <main class="INTRODUÇÃO">
+        <section id="inicio" class="financeira">
+           
+              <img class="img_gradient" src="gradient(1).png" alt="gradient" class="imagem_inicio">
+               <div  class="leyer_blur"></div>
+               <div class="logo-container">
+    <h1 class="logo" data-aos="fade-down" data-aos-duration="2500" data-text="KLLD">KLLD</h1>
+    <span class="subtitle" data-aos="fade-down" data-aos-duration="12500">TECHNOLOGY</span>
+</div>
+             <div class="content" >
+                <div data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="300"
+     data-aos-offset="0" data-aos-duration="2000"  class="tag-box">
+                    <div class="teg">INTRODUÇÃO &wedbar;</div><br>
+                     <h1 data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="300"
+     data-aos-offset="0" data-aos-duration="1500"> planilia para <br> organização  </h1>
+                        <p class="description" data-aos="fade-zoom-in" data-aos-easing="ease-in-back"
+     data-aos-delay="300"
+     data-aos-offset="0" data-aos-duration="1500">
+                       
+                            Bem-vindo a KLLD, seu portal de planejamento e organização financeira.
+                             Aqui, você pode gerenciar suas finanças pessoais, acompanhar seus investimentos,
+                              planejar atividades de lazer e gerenciar seus imóveis e automóveis de forma eficiente.
+                               Nossa plataforma oferece ferramentas intuitivas para ajudá-lo a alcançar seus objetivos 
+                               financeiros e manter o controle sobre suas despesas e receitas mensais. Explore nossas seções
+                                dedicadas e comece a organizar sua vida financeira hoje mesmo!
+                        </p>
+                        <div  data-aos-easing="ease-in-back"
+     data-aos-delay="300"
+     data-aos-offset="0" data-aos-duration="1500"class="buttons">
+                                                            <a href="#" id="btn-documentacao" class="btn-get-startedd" onclick="showSection('documentacao')"> documentação &gt;</a>
+                              <a href="https://youtu.be/sTpun7CyKCk" class="btn-watch-tutorial" target="_blank" rel="noopener noreferrer"> assistir tutorial &gt;</a>
+                            </div>
+                         
+                        </div>
+                      </div>
+                      
+            <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.28/build/spline-viewer.js"></script>
+        <spline-viewer class="robo-3d" url="https://prod.spline.design/xA34p3KdwN4iWlvO/scene.splinecode"></spline-viewer>
+          </section>
+        </section>
+        <!-- Documentação do Sistema -->
+        <section id="documentacao" class="financeira" style="display:none; padding:24px;">
+            <div class="doc-header">
+                <h2>Documentação do Planilia</h2>
+                <p>Guia completo de uso, funcionamento e dados técnicos da aplicação.</p>
+            </div>
+
+            <div class="doc-content">
+                <h3>Visão Geral</h3>
+                <p>Planilia é um portal para gestão pessoal: finanças, investimentos, lazer, imóveis e automóveis. Ele roda totalmente no navegador e usa <strong>localStorage</strong> para persistência.</p>
+
+                <h3>Como Navegar</h3>
+                <ul>
+                    <li><strong>Início:</strong> visão geral e links úteis (documentação, tutorial).</li>
+                    <li><strong>Finanças:</strong> registre receitas e despesas, envie para atualizar o gráfico de evolução.</li>
+                    <li><strong>Investimentos / Lazer / Imóveis / Automóveis:</strong> formulários para cadastrar e visualizar itens.</li>
+                </ul>
+
+                <h3>Autenticação</h3>
+                <p>O sistema salva usuários em <code>localStorage</code> na chave <code>users</code>. Você pode cadastrar múltiplos emails; todos podem fazer login enquanto mantiverem a mesma senha cadastrada. Existe também uma conta de teste: <code>admin@klld.com</code> / <code>123456</code>.</p>
+
+                <h3>Armazenamento (localStorage)</h3>
+                <ul>
+                    <li><code>users</code>: array de objetos { name, email, password }.</li>
+                    <li><code>dadosFinanceiros</code>: histórico de lançamentos [{ hora, saldo }].</li>
+                    <li><code>minhaCarteira</code>, <code>meuLazer</code>, <code>meusImoveis</code>, <code>meusAutomoveis</code>: arrays com itens salvos por seção.</li>
+                </ul>
+
+                <h3>Gráfico de Evolução</h3>
+                <p>O gráfico usa Chart.js e tem filtros por período: <em>Dia</em> (últimas 24h), <em>Semana</em> (7 dias) e <em>Mês</em> (30 dias). Os botões na área financeira chamam funções que re-renderizam o gráfico usando os dados filtrados.</p>
+
+                <h3>Formato de Datas</h3>
+                <p>Para o filtro temporal funcionar corretamente, registros no histórico devem ter o campo <code>hora</code> com um destes formatos:</p>
+                <ol>
+                    <li><code>DD/MM/YYYY HH:MM</code> — data completa</li>
+                    <li><code>HH:MM</code> — hora do dia (assume a data de hoje)</li>
+                </ol>
+
+                <h3>Como Resetar Dados</h3>
+                <p>Para apagar todos os dados use o botão <em>Limpar Tudo e Resetar Gráfico</em> na seção de finanças, ou no console do navegador:</p>
+                <pre>localStorage.clear();</pre>
+
+                <h3>Dicas e Problemas Comuns</h3>
+                <ul>
+                    <li>Se o gráfico não aparece, verifique se existem registros em <code>dadosFinanceiros</code>.</li>
+                    <li>Se não conseguir logar, confirme email e senha em <code>users</code> no console do navegador.</li>
+                    <li>Em caso de caracteres estranhos ou problemas de encoding, tente recarregar a página e checar o arquivo <code>script.js</code>.</li>
+                </ul>
+
+                
+            </div>
+        </section>
+    </main>
+      
+     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <section id="financas" class="financeira">
+            <button onclick="abrirCalculadora()">🧮 Calculadora</button>
+            <h2>Receitas Mensais</h2>
+                         
+                              
+                              <div class="true-slap">
+                    <div class="slap">
+                           <img src="baixados2.webp" alt="moeda arvore" class="imagem3" id="img3">
+            
+                               <img src="OIP (1).jpeg" alt="financas" class="imagem1" id="img1">
+                                <img src="baixados (3).webp" alt="foto moeda" class="imagem2" id="img2">
+                                 </div> 
+
+                            <div class="slap-nav">
+                             <a href="#img3"></a> <a href="#img1"></a>
+                            <a href="#img2"></a>
+                      </div>
+                </div>
+                              </div>
+                              
+                <div class="dashboard-financeiro">
+    <div class="coluna-financas">
+        <label for="10">Salário</label>
+        <input type="number" id="10" placeholder="R$">
+        
+        <label for="11">Aux. Moradia</label>
+        <input type="number" id="11" placeholder="R$">
+        
+        <label for="12">Aux. Transporte</label>
+        <input type="number" id="12" placeholder="R$">
+        
+        <label for="13">Aux. Saúde</label>
+        <input type="number" id="13" placeholder="R$">
+        
+        <label for="14">Vale Refeição</label>
+        <input type="number" id="14" placeholder="R$">
+        
+        <label for="15">Investimentos</label>
+        <input type="number" id="15" placeholder="R$">
+        <label for="16">alugueis</label>
+        <input type="number" id="16" placeholder="R$">
+        <label for="17">impreendorismo</label>
+        <input type="number" id="17" placeholder="R$">
+        <label for="18">bicos</label>
+        <input type="number" id="18" placeholder="R$">
+
+         <br>
+        <button type="button" id="button2" class="enviarfatura" onclick="enviarfatura()">Enviar Faturamento</button>
+<button type="button" class="btn-voltar" onclick="voltarResultado()">Voltar Resultado</button>
+<div id="grafico" class="mini-status">Total: 0</div>
+    </div>
+    <div class="coluna-financas chart-box">
+      
+                              <div class="controles-grafico">
+
+         <button class="dia" onclick="filtrarDia()">Dia</button>
+         <button class="semana" onclick="filtrarSemana()">Semana</button>
+         <button class="mes" onclick="filtrarMes()">Mês</button>
+        <div id="valor_final" width="200" height="200" class="valor_finalS"> 
+                                  <h2>Valor Final Mensal</h2> <br>
+                                        <p>0</p>  
+                                        <button type="button" id="btn-reset" onclick="reiniciarTudo()">Limpar Tudo e Resetar Gráfico</button>
+                              </div> <br>
+    </div>
+    <canvas id="graficoEvolucao" style="cursor: pointer;"></canvas>
+        <label>Evolução Temporal</label>
+        <canvas id="graficoEvolucao" style="cursor: pointer;"></canvas>
+    </div>
+
+    <!-- Modal para exibir o gráfico em tela cheia -->
+    <div id="graficoModal" class="grafico-modal" style="display: none;">
+        <div class="grafico-modal-content">
+            <button class="grafico-modal-close" onclick="fecharGraficoModal()">✕</button>
+            <canvas id="graficoModal-canvas"></canvas>
+        </div>
+    </div>
+
+    <div class="coluna-financas">
+        <label for="2">Transporte</label>
+        <input type="number" id="2" placeholder="R$">
+        
+        <label for="3">Alimentação</label>
+        <input type="number" id="3" placeholder="R$">
+        
+        <label for="4">Saúde</label>
+        <input type="number" id="4" placeholder="R$">
+        
+        <label for="5">Lazer</label>
+        <input type="number" id="5" placeholder="R$">
+        
+        <label for="6">Investimentos (Saída)</label>
+        <input type="number" id="6" placeholder="R$">
+        
+        <label for="7">Imóveis</label>
+        <input type="number" id="7" placeholder="R$">
+        
+        <label for="8">Automóveis</label>
+        <input type="number" id="8" placeholder="R$">
+        
+        <label for="9">Outros</label>
+        <input type="number" id="9" placeholder="R$">
+       <button type="button" id="button" class="enviardivida" onclick="enviardivida()">Enviar Despesas</button>
+<button type="button" class="btn-voltar" onclick="voltarResultado()">Voltar Resultado</button>
+<div id="grafico2" class="mini-status2">Total: 0</div>
+    </div>
+      
+</div>
+                    
+        </section>
+    
+       <section id="investimentos" class="financeira">
+        <button onclick="abrirCalculadora()">🧮 Calculadora</button>
+    <div class="invest-header">
+        <h2><i class="fas fa-chart-line"></i> Gestão de Investimentos</h2>
+        <p>Acompanhe e projete o crescimento do seu patrimônio.</p>
+    </div>
+
+    <div class="invest-container">
+        <div class="invest-gallery" data-aos="fade-right">
+            <div class="img-wrapper">
+                <img src="OIP.jpeg" alt="Mercado" class="img-inv">
+                <img src="OIP.webp" alt="Gráficos" class="img-inv">
+                <img src="OIP (1).webp" alt="Moedas" class="img-inv">
+            </div>
+        </div>
+
+        <div class="invest-card" data-aos="fade-left">
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Nome do Ativo</label>
+                    <input type="text" id="investimentoNome" placeholder="Ex: PETR4 ou CDB">
+                </div>
+                <div class="input-group">
+                    <label>Valor Aplicado</label>
+                    <input type="number" id="investimentoValor" placeholder="R$">
+                </div>
+               
+                <div class="input-group">
+                    <label>Tipo</label>
+                    <select id="investimentoTipo">
+                        <option value="Selecione">Selecione</option>
+                        <option value="poupança">Poupança</option>
+                        <option value="ações">Ações</option>
+                        <option value="fundos imobiliários">FIIs</option>
+                        <option value="tesouro direto">Tesouro Direto</option>
+                        <option value="cripto moedas">Criptomoedas</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Rendimento (%)</label>
+                    <input type="number" id="investimentoRendimento" placeholder="% ao ano">
+                </div>
+                <div class="input-group">
+                    <label>Prazo (Meses)</label>
+                    <input type="number" id="investimentoPrazo" placeholder="Ex: 12">
+                </div>
+                <div class="input-group">
+                    <label>Risco</label>
+                    <select id="investimentoRiesgo">
+                        <option value="baixo">Baixo</option>
+                        <option value="médio">Médio</option>
+                        <option value="alto">Alto</option>
+                    </select>
+                </div>
+                <div class="input-group full-width">
+                    <label>Data de Início</label>
+                    <input type="date" id="investimentoData">
+                </div>
+            </div>
+            <button class="btn-invest" onclick="adicionarInvestimento()">
+                <i class="fas fa-plus"></i> Adicionar à Carteira
+            </button>
+        </div>
+    </div>
+
+    <div class="invest-list-container" data-aos="fade-up">
+        <h3>Ativos na Carteira</h3>
+        <div id="listaInvestimentos" class="invest-grid-results">
+            <p class="empty-msg">Nenhum investimento registrado.</p>
+        </div>
+    </div>
+</section>
+          
+      <section id="lazer" class="financeira">
+        <button onclick="abrirCalculadora()">🧮 Calculadora</button>
+        <div class="lazer-header" data-aos="fade-down">
+        <h2><i class="fas fa-skating"></i> Experiências KLLD</h2>
+        <p>Organize sua vida social com o mesmo rigor dos seus negócios.</p>
+    </div>
+    <div class="lazer-showcase" data-aos="fade-right">
+        <div class="lazer-text">
+            <h3>Explore o Mundo</h3>
+            <p>Cadastre suas viagens e aventuras. Nossa plataforma ajuda você a entender o impacto das suas experiências no seu orçamento anual de forma inteligente.</p>
+        </div>
+        <div class="lazer-photo-big">
+            <img src="OIP (2).jpeg" alt="Viagens">
+        </div>
+    </div>
+
+    <div class="lazer-showcase reverse" data-aos="fade-left">
+        <div class="lazer-photo-big">
+            <img src="OIP (3).jpeg" alt="Momentos">
+        </div>
+        <div class="lazer-text">
+            <h3>Momentos de Relaxamento</h3>
+            <p>Planeje seu jantar ou cinema. Ter um teto de gastos para o lazer permite que você aproveite sem surpresas no fim do mês.</p>
+        </div>
+    </div>
+    <div class="lazer-dashboard-container">
+        <div class="lazer-left-column">
+            
+            <div class="lazer-form-small" data-aos="fade-right">
+                <h3><i class="fas fa-plus-circle"></i> Novo Registro</h3>
+                <div class="input-stack">
+                    
+                    <div class="field">
+                        <label>Atividade de Lazer</label>
+                        <select id="lazerAtividade">
+                            <option value="Selecione">Selecione...</option>
+                            <option value="viagem">✈️ Viagem / Passagens</option>
+                            <option value="hotel">🏨 Hospedagem</option>
+                            <option value="cinema">🎬 Cinema / Streaming</option>
+                            <option value="show">🎸 Shows / Concertos</option>
+                            <option value="lanchonete">🍔 Lanches / Fast Food</option>
+                            <option value="restaurante">🍽️ Restaurante / Jantar</option>
+                            <option value="bar">🍹 Bar / Balada</option>
+                            <option value="esporte">⚽ Jogo / Estádio</option>
+                            <option value="parque">🎡 Parque / Clube</option>
+                            <option value="outros">✨ Outros</option>
+                        </select>
+                    </div>
+                   
+                    <div class="field">
+                        <label>Forma de Pagamento</label>
+                        <select id="lazerPagamento">
+                            <option value="Dinheiro">💵 Dinheiro</option>
+                            <option value="Pix">📱 Pix</option>
+                            <option value="Cartão de Crédito">💳 Cartão de Crédito</option>
+                            <option value="Cartão de Débito">💳 Cartão de Débito</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Custo (R$)</label>
+                        <input type="number" id="lazerCusto" placeholder="0.00">
+                    </div>
+
+                    <div class="field">
+                        <label>Data</label>
+                        <input type="date" id="lazerData">
+                    </div>
+
+                    <div class="field">
+                        <label>Nota / Descrição</label>
+                        <input type="text" id="lazerNota" placeholder="Ex: Aniversário do Pedro">
+                    </div>
+
+                    <button class="btn-lazer-save" onclick="adicionarLazer()">
+                        <i class="fas fa-check"></i> Salvar na Carteira
+                    </button>
+                </div>
+            </div>
+
+            <div class="lazer-history-left" data-aos="fade-up">
+                <h3><i class="fas fa-history"></i> Histórico de Lazer</h3>
+                <div id="listaLazeres">
+                    </div>
+            </div>
+
+        </div>
+
+        <div class="lazer-right-space"></div>
+    </div>
+</section>
+</section>
+        <section id="imoveis" class="financeira">
+            <button onclick="abrirCalculadora()">🧮 Calculadora</button>
+            <div class="invest-header">
+                <h2><i class="fas fa-home"></i> Gestão de Imóveis</h2>
+                <p>Organize seu patrimônio imobiliário e despesas relacionadas.</p>
+            </div>
+
+            <div class="property-container">
+                <div class="property-form-section">
+                    <h3>Adicionar Novo Imóvel</h3>
+                    <div class="form-grid">
+                        <div class="input-group full-width">
+                            <label>Endereço do Imóvel</label>
+                            <input type="text" id="imovelEndereco" placeholder="Ex: Rua das Flores, 123">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>Tipo de Imóvel</label>
+                            <select id="imovelTipo">
+                                <option value="Selecione">Selecione</option>
+                                <option value="casa">Casa</option>
+                                <option value="apartamento">Apartamento</option>
+                                <option value="comercial">Comercial</option>
+                                <option value="lote">Lote</option>
+                                <option value="sitio">Sítio</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Valor do Imóvel</label>
+                            <input type="number" id="imovelValor" placeholder="R$">
+                        </div>
+                        <div class="input-group">
+                            <label>Ano de Aquisição</label>
+                            <input type="number" id="imovelAno" placeholder="Ex: 2023">
+                        </div>
+                        <div class="input-group">
+                            <label>Área (m²)</label>
+                            <input type="number" id="imovelArea" placeholder="Ex: 150">
+                        </div>
+                        <div class="input-group full-width">
+                            <label>Data de Aquisição</label>
+                            <input type="date" id="imovelData">
+                        </div>
+                    </div>
+                    <button class="btn-invest" onclick="adicionarImovel()">
+                        <i class="fas fa-plus"></i> Adicionar Imóvel
+                    </button>
+                </div>
+
+                <div class="property-gallery-section">
+                    <h3>Galeria de Imóveis</h3>
+                    <div class="property-gallery">
+                        <div class="property-card">
+                            <img src="OIP (4).jpeg" alt="Imóvel" class="property-img">
+                            <div class="property-info">
+                                <h4>Casarões Elegantes</h4>
+                                <p>Imóveis residenciais com estrutura sólida e localização privilegiada</p>
+                            </div>
+                        </div>
+                        <div class="property-card">
+                            <img src="baixados (1) cas.webp" alt="Casa" class="property-img">
+                            <div class="property-info">
+                                <h4>Casas Aconchegantes</h4>
+                                <p>Suas casas prontas para criar memórias e construir patrimônio</p>
+                            </div>
+                        </div>
+                        <div class="property-card">
+                            <img src="OIP (2) dent.webp" alt="Apartamento" class="property-img">
+                            <div class="property-info">
+                                <h4>Apartamentos Modernos</h4>
+                                <p>Espaços sofisticados para viver com conforto e segurança</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="invest-list-container" data-aos="fade-up">
+                <h3>Imóveis Registrados</h3>
+                <div id="listaImoveis" class="invest-grid-results">
+                    <p class="empty-msg">Nenhum imóvel registrado.</p>
+                </div>
+            </div>
+        </section>
+       <section id="automoveis" class="financeira">
+        <button onclick="abrirCalculadora()">🧮 Calculadora</button>
+            <div class="invest-header">
+                <h2><i class="fas fa-car"></i> Gestão de Automóveis</h2>
+                <p>Acompanhe seus veículos e despesas de manutenção.</p>
+            </div>
+
+            <div class="car-container">
+                <div class="car-gallery-section">
+                    <h3>Galeria de Automóveis</h3>
+                    <div class="car-gallery">
+                        <div class="car-card">
+                            <img src="baixados.webp" alt="Carro" class="car-img">
+                            <div class="car-info">
+                                <h4>Sedãs Confiáveis</h4>
+                                <p>Veículos com excelente custo-benefício e baixa manutenção</p>
+                            </div>
+                        </div>
+                        <div class="car-card">
+                            <img src="OIP (5).jpeg" alt="Moto" class="car-img">
+                            <div class="car-info">
+                                <h4>Motos Ágeis</h4>
+                                <p>Mobilidade eficiente e econômica para o dia a dia</p>
+                            </div>
+                        </div>
+                        <div class="car-card">
+                            <img src="OIP (2) hli.webp" alt="Automóvel" class="car-img">
+                            <div class="car-info">
+                                <h4>SUVs Robustas</h4>
+                                <p>Segurança e conforto em um veículo versátil e potente</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="car-form-section">
+                    <h3>Adicionar Novo Automóvel</h3>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label>Tipo de Automóvel</label>
+                            <select id="automovelTipo">
+                                <option value="Selecione">Selecione</option>
+                                <option value="carro">Carro</option>
+                                <option value="moto">Moto</option>
+                                <option value="caminhão">Caminhão</option>
+                                <option value="helicoptero">Helicóptero</option>
+                                <option value="jato_particular">Jato Particular</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Modelo</label>
+                            <input type="text" id="automovelModelo" placeholder="Ex: Toyota Corolla">
+                        </div>
+                        <div class="input-group">
+                            <label>Ano de Fabricação</label>
+                            <input type="number" id="automovelAno" placeholder="Ex: 2023">
+                        </div>
+                        <div class="input-group">
+                            <label>Valor do Automóvel</label>
+                            <input type="number" id="automovelValor" placeholder="R$">
+                        </div>
+                       
+                        <div class="input-group">
+                            <label>Combustível</label>
+                            <select id="combustivelAutomovel">
+                                <option value="Selecione">Selecione</option>
+                                <option value="gasolina">Gasolina</option>
+                                <option value="alcool">Álcool</option>
+                                <option value="diesel">Diesel</option>
+                                <option value="eletrico">Elétrico</option>
+                                <option value="hibrido">Híbrido</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Frequência de Manutenção</label>
+                            <select id="manutencaoAutomovel">
+                                <option value="Selecione">Selecione</option>
+                                <option value="mensal">Mensal</option>
+                                <option value="trimestral">Trimestral</option>
+                                <option value="semestral">Semestral</option>
+                                <option value="anual">Anual</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Seguro</label>
+                            <select id="seguroAutomovel">
+                                <option value="Selecione">Selecione</option>
+                                <option value="básico">Básico</option>
+                                <option value="completo">Completo</option>
+                                <option value="premium">Premium</option>
+                            </select>
+                        </div>
+                        <div class="input-group full-width">
+                            <label>Gasto com Combustível (últimas semanas em R$)</label>
+                            <input type="number" id="quantidadeGasolina" placeholder="0.00">
+                        </div>
+                    </div>
+                    <button class="btn-invest" onclick="adicionarAutomovel()">
+                        <i class="fas fa-plus"></i> Adicionar Automóvel
+                    </button>
+                </div>
+            </div>
+
+            <div class="invest-list-container" data-aos="fade-up">
+                <h3>Automóveis Registrados</h3>
+                <div id="listaAutomoveis" class="invest-grid-results">
+                    <p class="empty-msg">Nenhum automóvel registrado.</p>
+                </div>
+            </div>
+        </section>
+ <div class="conteiner" id="conteiner" style="display: none;">
+       <div class="form-conteiner sing-up" >
+           <form>
+              <h1> Criar a conta  </h1>
+                 <div class="social-icons">
+                   <a href="#" class="icon"><i class="fab fa-google"></i></a>
+                   <a href="#" class="icon"><i class="fab fa-facebook-f"></i></a>
+                   <a href="#" class="icon"><i class="fab fa-linkedin-in"></i></a>
+                   <a href="#" class="icon"><i class="fab fa-github"></i></a>
+                </div>
+                <span> ultiliza o seu email para o registro </span>
+                <input type="text" placeholder="Nome Completo" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Senha" required>
+                <button type="submit"> Criar Conta </button>
+        
+            </form>
+        </div> 
+        <div class="form-conteiner sing-in" >
+           <form>
+              <h1> logar na conta  </h1>
+               <div class="social-icons">
+                     <a href="#" class="icon"><i class="fa-brands fa-google"></i></a>
+                     <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                     <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a> 
+                     <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>      
+              </div>
+                <span> ultiliza o seu email para logar na conta </span>
+                
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Senha" required>
+                <a href="#"> Esqueceu a senha ? </a>
+                <button type="submit"> logar Conta </button>
+        
+            </form>
+       </div>
+       <div class="toggle-conteiner">
+          <div class="toggle">
+            <div class="toggle-panel toggle-left">
+                <h1> bem vindo de volta </h1>
+                <p> insira seus dados pessoais para usar todos os recusos do site </p>
+                <button class="hidden" id="login"> login </button>
+            </div>
+            <div class="toggle-panel toggle-right">
+                <h1> Olá amigo! bem vindo ao  <h1 class="logo"  data-text="KLLD">KLLD</h1>
+    <span class="subtitle">TECHNOLOGY</span></h1>
+                <p> registra com seus dados pesssoais para usar os rucurso do site  </p>
+                <button class="hidden" id="registro">escreva-se </button>
+            </div>
+          </div>
+
+       </div>
+   </div>
+ <div id="calculadora-modal" class="calc-container">
+    <div class="calc-header">
+        <span><i class="fas fa-calculator"></i> Calculadora KLLD</span>
+        <button onclick="fecharCalculadora()" class="calc-close">&times;</button>
+    </div>
+    <div class="calc-display">
+        <input type="text" id="calc-resultado" readonly value="0">
+    </div>
+    <div class="calc-buttons">
+        <button class="btn-tool" onclick="limparCalc()">C</button>
+        <button class="btn-tool" onclick="apagarUltimo()"><i class="fas fa-backspace"></i></button>
+        <button class="btn-op" onclick="inserir('/')">/</button>
+        <button class="btn-op" onclick="inserir('*')">&times;</button>
+        
+        <button onclick="inserir('7')">7</button>
+        <button onclick="inserir('8')">8</button>
+        <button onclick="inserir('9')">9</button>
+        <button class="btn-op" onclick="inserir('-')">-</button>
+        
+        <button onclick="inserir('4')">4</button>
+        <button onclick="inserir('5')">5</button>
+        <button onclick="inserir('6')">6</button>
+        <button class="btn-op" onclick="inserir('+')">+</button>
+        
+        <button onclick="inserir('1')">1</button>
+        <button onclick="inserir('2')">2</button>
+        <button onclick="inserir('3')">3</button>
+        <button class="btn-equal" onclick="calcular()">=</button>
+        
+        <button class="btn-zero" onclick="inserir('0')">0</button>
+        <button onclick="inserir('.')">.</button>
+    </div>
+</div>
+
+</main>
+       
+      <footer></footer>
+      
+  <script>
+    AOS.init();
+  </script>
+  
+            <script src="script.js"></script>
+      </body>
+</html>
