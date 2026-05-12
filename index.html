@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 <div id="loader-container">
     <div class="loader"></div>
@@ -25,35 +26,31 @@
        
       </li>
 
-      <div class="dropdown"></div>
       <li class="financeiras_emnu" data-aos="fade-down" data-aos-duration="1500">
-      
-        <a  href="#" class="link_menu"  onclick="showSection('financas')" >finanças</a>
+        <a href="#" class="link_menu" onclick="showSection('financas')" >finanças</a>
       </li>
       <li data-aos="fade-down" data-aos-duration="2000">
-        <a href="#" class="link_menu"  onclick="showSection('investimentos')" >investimentos</a>
+        <a href="#" class="link_menu" onclick="showSection('investimentos')" >investimentos</a>
       </li>
       <li data-aos="fade-down" data-aos-duration="2500">
-        <a href="#" class="link_menu"  onclick="showSection('lazer')" >lazer</a>
+        <a href="#" class="link_menu" onclick="showSection('lazer')" >lazer</a>
       </li>
       <li data-aos="fade-down" data-aos-duration="3000">
         <a href="#" class="link_menu" onclick="showSection('imoveis')" >imóveis</a>
       </li>
       <li data-aos="fade-down" data-aos-duration="3000" >
-          <a href="#" class="link_menu"  onclick="showSection('automoveis')" >automóveis</a>
-        </div>
+          <a href="#" class="link_menu" onclick="showSection('automoveis')" >automóveis</a>
      </li>
     </ul>
   </nav>
   <div class="header2">
-                        
-                      
-                          <button class="button321" data-aos="fade-down" data-aos-duration="1500" onclick="abrirLogin()"> Login </button> <br>
-                     </div>
+      <button class="button321" data-aos="fade-down" data-aos-duration="1500" onclick="loginGoogle()" id="btn-login">Login Google</button>
+      <button class="button321" onclick="logoutGoogle()" id="btn-logout" style="display:none;">Sair</button>
+      <span id="user-nome" style="color: var(--clara-color); font-size: 0.9rem; margin-left: 10px;"></span>
+  </div>
 </header>
     
      <main class="financeiras">
-        <main class="INTRODUÇÃO">
         <section id="inicio" class="financeira">
            
               <img class="img_gradient" src="gradient(1).png" alt="gradient" class="imagem_inicio">
@@ -96,7 +93,7 @@
             <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.28/build/spline-viewer.js"></script>
         <spline-viewer class="robo-3d" url="https://prod.spline.design/xA34p3KdwN4iWlvO/scene.splinecode"></spline-viewer>
           </section>
-        </section>
+
         <!-- Documentação do Sistema -->
         <section id="documentacao" class="financeira" style="display:none; padding:24px;">
             <div class="doc-header">
@@ -106,72 +103,27 @@
 
             <div class="doc-content">
                 <h3>Visão Geral</h3>
-                <p>Planilia é um portal para gestão pessoal: finanças, investimentos, lazer, imóveis e automóveis. Ele roda totalmente no navegador e usa <strong>localStorage</strong> para persistência.</p>
-
-                <h3>Como Navegar</h3>
-                <ul>
-                    <li><strong>Início:</strong> visão geral e links úteis (documentação, tutorial).</li>
-                    <li><strong>Finanças:</strong> registre receitas e despesas, envie para atualizar o gráfico de evolução.</li>
-                    <li><strong>Investimentos / Lazer / Imóveis / Automóveis:</strong> formulários para cadastrar e visualizar itens.</li>
-                </ul>
+                <p>Planilia é um portal para gestão pessoal: finanças, investimentos, lazer, imóveis e automóveis. Usa <strong>Firebase Firestore</strong> para salvar seus dados na nuvem.</p>
 
                 <h3>Autenticação</h3>
-                <p>O sistema salva usuários em <code>localStorage</code> na chave <code>users</code>. Você pode cadastrar múltiplos emails; todos podem fazer login enquanto mantiverem a mesma senha cadastrada. Existe também uma conta de teste: <code>admin@klld.com</code> / <code>123456</code>.</p>
+                <p>O sistema usa <strong>Login com Google via Firebase Auth</strong>. Seus dados ficam salvos na sua conta e você acessa de qualquer dispositivo.</p>
 
-                <h3>Armazenamento (localStorage)</h3>
+                <h3>Armazenamento (Firebase Firestore)</h3>
                 <ul>
-                    <li><code>users</code>: array de objetos { name, email, password }.</li>
-                    <li><code>dadosFinanceiros</code>: histórico de lançamentos [{ hora, saldo }].</li>
-                    <li><code>minhaCarteira</code>, <code>meuLazer</code>, <code>meusImoveis</code>, <code>meusAutomoveis</code>: arrays com itens salvos por seção.</li>
+                    <li><code>receitas</code>: histórico de receitas do usuário</li>
+                    <li><code>despesas</code>: histórico de despesas do usuário</li>
+                    <li><code>investimentos</code>, <code>lazer</code>, <code>imoveis</code>, <code>automoveis</code>: coleções com itens salvos por usuário</li>
                 </ul>
 
                 <h3>Gráfico de Evolução</h3>
-                <p>O gráfico usa Chart.js e tem filtros por período: <em>Dia</em> (últimas 24h), <em>Semana</em> (7 dias) e <em>Mês</em> (30 dias). Os botões na área financeira chamam funções que re-renderizam o gráfico usando os dados filtrados.</p>
-
-                <h3>Formato de Datas</h3>
-                <p>Para o filtro temporal funcionar corretamente, registros no histórico devem ter o campo <code>hora</code> com um destes formatos:</p>
-                <ol>
-                    <li><code>DD/MM/YYYY HH:MM</code> — data completa</li>
-                    <li><code>HH:MM</code> — hora do dia (assume a data de hoje)</li>
-                </ol>
-
-                <h3>Como Resetar Dados</h3>
-                <p>Para apagar todos os dados use o botão <em>Limpar Tudo e Resetar Gráfico</em> na seção de finanças, ou no console do navegador:</p>
-                <pre>localStorage.clear();</pre>
-
-                <h3>Dicas e Problemas Comuns</h3>
-                <ul>
-                    <li>Se o gráfico não aparece, verifique se existem registros em <code>dadosFinanceiros</code>.</li>
-                    <li>Se não conseguir logar, confirme email e senha em <code>users</code> no console do navegador.</li>
-                    <li>Em caso de caracteres estranhos ou problemas de encoding, tente recarregar a página e checar o arquivo <code>script.js</code>.</li>
-                </ul>
-
-                
+                <p>O gráfico usa Chart.js e busca os dados direto do Firebase em tempo real.</p>
             </div>
         </section>
-    </main>
       
-     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-        <section id="financas" class="financeira">
+        <section id="financas" class="financeira" style="display:none;">
             <button onclick="abrirCalculadora()">🧮 Calculadora</button>
             <h2>Receitas Mensais</h2>
                          
-                              
-                              <div class="true-slap">
-                    <div class="slap">
-                           <img src="baixados2.webp" alt="moeda arvore" class="imagem3" id="img3">
-            
-                               <img src="OIP (1).jpeg" alt="financas" class="imagem1" id="img1">
-                                <img src="baixados (3).webp" alt="foto moeda" class="imagem2" id="img2">
-                                 </div> 
-
-                            <div class="slap-nav">
-                             <a href="#img3"></a> <a href="#img1"></a>
-                            <a href="#img2"></a>
-                      </div>
-                </div>
-                              </div>
-                              
                 <div class="dashboard-financeiro">
     <div class="coluna-financas">
         <label for="10">Salário</label>
@@ -200,33 +152,22 @@
 
          <br>
         <button type="button" id="button2" class="enviarfatura" onclick="enviarfatura()">Enviar Faturamento</button>
-<button type="button" class="btn-voltar" onclick="voltarResultado()">Voltar Resultado</button>
 <div id="grafico" class="mini-status">Total: 0</div>
     </div>
     <div class="coluna-financas chart-box">
       
-                              <div class="controles-grafico">
-
+        <div class="controles-grafico">
          <button class="dia" onclick="filtrarDia()">Dia</button>
          <button class="semana" onclick="filtrarSemana()">Semana</button>
          <button class="mes" onclick="filtrarMes()">Mês</button>
-        <div id="valor_final" width="200" height="200" class="valor_finalS"> 
+        <div id="valor_final" class="valor_finalS"> 
                                   <h2>Valor Final Mensal</h2> <br>
-                                        <p>0</p>  
+                                        <p id="valor-final-texto">0</p>  
                                         <button type="button" id="btn-reset" onclick="reiniciarTudo()">Limpar Tudo e Resetar Gráfico</button>
                               </div> <br>
     </div>
     <canvas id="graficoEvolucao" style="cursor: pointer;"></canvas>
         <label>Evolução Temporal</label>
-        <canvas id="graficoEvolucao" style="cursor: pointer;"></canvas>
-    </div>
-
-    <!-- Modal para exibir o gráfico em tela cheia -->
-    <div id="graficoModal" class="grafico-modal" style="display: none;">
-        <div class="grafico-modal-content">
-            <button class="grafico-modal-close" onclick="fecharGraficoModal()">✕</button>
-            <canvas id="graficoModal-canvas"></canvas>
-        </div>
     </div>
 
     <div class="coluna-financas">
@@ -254,7 +195,6 @@
         <label for="9">Outros</label>
         <input type="number" id="9" placeholder="R$">
        <button type="button" id="button" class="enviardivida" onclick="enviardivida()">Enviar Despesas</button>
-<button type="button" class="btn-voltar" onclick="voltarResultado()">Voltar Resultado</button>
 <div id="grafico2" class="mini-status2">Total: 0</div>
     </div>
       
@@ -262,7 +202,7 @@
                     
         </section>
     
-       <section id="investimentos" class="financeira">
+       <section id="investimentos" class="financeira" style="display:none;">
         <button onclick="abrirCalculadora()">🧮 Calculadora</button>
     <div class="invest-header">
         <h2><i class="fas fa-chart-line"></i> Gestão de Investimentos</h2>
@@ -335,31 +275,13 @@
     </div>
 </section>
           
-      <section id="lazer" class="financeira">
+      <section id="lazer" class="financeira" style="display:none;">
         <button onclick="abrirCalculadora()">🧮 Calculadora</button>
         <div class="lazer-header" data-aos="fade-down">
         <h2><i class="fas fa-skating"></i> Experiências KLLD</h2>
         <p>Organize sua vida social com o mesmo rigor dos seus negócios.</p>
     </div>
-    <div class="lazer-showcase" data-aos="fade-right">
-        <div class="lazer-text">
-            <h3>Explore o Mundo</h3>
-            <p>Cadastre suas viagens e aventuras. Nossa plataforma ajuda você a entender o impacto das suas experiências no seu orçamento anual de forma inteligente.</p>
-        </div>
-        <div class="lazer-photo-big">
-            <img src="OIP (2).jpeg" alt="Viagens">
-        </div>
-    </div>
-
-    <div class="lazer-showcase reverse" data-aos="fade-left">
-        <div class="lazer-photo-big">
-            <img src="OIP (3).jpeg" alt="Momentos">
-        </div>
-        <div class="lazer-text">
-            <h3>Momentos de Relaxamento</h3>
-            <p>Planeje seu jantar ou cinema. Ter um teto de gastos para o lazer permite que você aproveite sem surpresas no fim do mês.</p>
-        </div>
-    </div>
+    
     <div class="lazer-dashboard-container">
         <div class="lazer-left-column">
             
@@ -422,12 +344,10 @@
             </div>
 
         </div>
-
-        <div class="lazer-right-space"></div>
     </div>
 </section>
-</section>
-        <section id="imoveis" class="financeira">
+
+        <section id="imoveis" class="financeira" style="display:none;">
             <button onclick="abrirCalculadora()">🧮 Calculadora</button>
             <div class="invest-header">
                 <h2><i class="fas fa-home"></i> Gestão de Imóveis</h2>
@@ -475,33 +395,6 @@
                         <i class="fas fa-plus"></i> Adicionar Imóvel
                     </button>
                 </div>
-
-                <div class="property-gallery-section">
-                    <h3>Galeria de Imóveis</h3>
-                    <div class="property-gallery">
-                        <div class="property-card">
-                            <img src="OIP (4).jpeg" alt="Imóvel" class="property-img">
-                            <div class="property-info">
-                                <h4>Casarões Elegantes</h4>
-                                <p>Imóveis residenciais com estrutura sólida e localização privilegiada</p>
-                            </div>
-                        </div>
-                        <div class="property-card">
-                            <img src="baixados (1) cas.webp" alt="Casa" class="property-img">
-                            <div class="property-info">
-                                <h4>Casas Aconchegantes</h4>
-                                <p>Suas casas prontas para criar memórias e construir patrimônio</p>
-                            </div>
-                        </div>
-                        <div class="property-card">
-                            <img src="OIP (2) dent.webp" alt="Apartamento" class="property-img">
-                            <div class="property-info">
-                                <h4>Apartamentos Modernos</h4>
-                                <p>Espaços sofisticados para viver com conforto e segurança</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="invest-list-container" data-aos="fade-up">
@@ -511,7 +404,8 @@
                 </div>
             </div>
         </section>
-       <section id="automoveis" class="financeira">
+
+       <section id="automoveis" class="financeira" style="display:none;">
         <button onclick="abrirCalculadora()">🧮 Calculadora</button>
             <div class="invest-header">
                 <h2><i class="fas fa-car"></i> Gestão de Automóveis</h2>
@@ -519,33 +413,6 @@
             </div>
 
             <div class="car-container">
-                <div class="car-gallery-section">
-                    <h3>Galeria de Automóveis</h3>
-                    <div class="car-gallery">
-                        <div class="car-card">
-                            <img src="baixados.webp" alt="Carro" class="car-img">
-                            <div class="car-info">
-                                <h4>Sedãs Confiáveis</h4>
-                                <p>Veículos com excelente custo-benefício e baixa manutenção</p>
-                            </div>
-                        </div>
-                        <div class="car-card">
-                            <img src="OIP (5).jpeg" alt="Moto" class="car-img">
-                            <div class="car-info">
-                                <h4>Motos Ágeis</h4>
-                                <p>Mobilidade eficiente e econômica para o dia a dia</p>
-                            </div>
-                        </div>
-                        <div class="car-card">
-                            <img src="OIP (2) hli.webp" alt="Automóvel" class="car-img">
-                            <div class="car-info">
-                                <h4>SUVs Robustas</h4>
-                                <p>Segurança e conforto em um veículo versátil e potente</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="car-form-section">
                     <h3>Adicionar Novo Automóvel</h3>
                     <div class="form-grid">
@@ -607,7 +474,6 @@
                             <label>Gasto com Combustível (últimas semanas em R$)</label>
                             <input type="number" id="quantidadeGasolina" placeholder="0.00">
                         </div>
-                    </div>
                     <button class="btn-invest" onclick="adicionarAutomovel()">
                         <i class="fas fa-plus"></i> Adicionar Automóvel
                     </button>
@@ -621,60 +487,8 @@
                 </div>
             </div>
         </section>
- <div class="conteiner" id="conteiner" style="display: none;">
-       <div class="form-conteiner sing-up" >
-           <form>
-              <h1> Criar a conta  </h1>
-                 <div class="social-icons">
-                   <a href="#" class="icon"><i class="fab fa-google"></i></a>
-                   <a href="#" class="icon"><i class="fab fa-facebook-f"></i></a>
-                   <a href="#" class="icon"><i class="fab fa-linkedin-in"></i></a>
-                   <a href="#" class="icon"><i class="fab fa-github"></i></a>
-                </div>
-                <span> ultiliza o seu email para o registro </span>
-                <input type="text" placeholder="Nome Completo" required>
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Senha" required>
-                <button type="submit"> Criar Conta </button>
-        
-            </form>
-        </div> 
-        <div class="form-conteiner sing-in" >
-           <form>
-              <h1> logar na conta  </h1>
-               <div class="social-icons">
-                     <a href="#" class="icon"><i class="fa-brands fa-google"></i></a>
-                     <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                     <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a> 
-                     <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>      
-              </div>
-                <span> ultiliza o seu email para logar na conta </span>
-                
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Senha" required>
-                <a href="#"> Esqueceu a senha ? </a>
-                <button type="submit"> logar Conta </button>
-        
-            </form>
-       </div>
-       <div class="toggle-conteiner">
-          <div class="toggle">
-            <div class="toggle-panel toggle-left">
-                <h1> bem vindo de volta </h1>
-                <p> insira seus dados pessoais para usar todos os recusos do site </p>
-                <button class="hidden" id="login"> login </button>
-            </div>
-            <div class="toggle-panel toggle-right">
-                <h1> Olá amigo! bem vindo ao  <h1 class="logo"  data-text="KLLD">KLLD</h1>
-    <span class="subtitle">TECHNOLOGY</span></h1>
-                <p> registra com seus dados pesssoais para usar os rucurso do site  </p>
-                <button class="hidden" id="registro">escreva-se </button>
-            </div>
-          </div>
 
-       </div>
-   </div>
- <div id="calculadora-modal" class="calc-container">
+ <div id="calculadora-modal" class="calc-container" style="display:none;">
     <div class="calc-header">
         <span><i class="fas fa-calculator"></i> Calculadora KLLD</span>
         <button onclick="fecharCalculadora()" class="calc-close">&times;</button>
@@ -712,10 +526,231 @@
        
       <footer></footer>
       
-  <script>
-    AOS.init();
-  </script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>AOS.init();</script>
   
-            <script src="script.js"></script>
-      </body>
+  <!-- FIREBASE + APP -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"
+    import { getFirestore, collection, addDoc, getDocs, query, where, orderBy, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB3GqzV0SCvYx3ZCPubg9k54NdKmJj8QkI",
+      authDomain: "planejamento-ea0ca.firebaseapp.com",
+      projectId: "planejamento-ea0ca",
+      storageBucket: "planejamento-ea0ca.firebasestorage.app",
+      messagingSenderId: "1017840994323",
+      appId: "1:1017840994323:web:5cabe4f96257f8741b97e6",
+    }
+    
+    const app = initializeApp(firebaseConfig)
+    const db = getFirestore(app)
+    const auth = getAuth(app)
+    const provider = new GoogleAuthProvider()
+
+    let usuarioLogado = null
+    let chartInstance = null
+
+    // CORREÇÃO 1: ESCONDE LOADER SEMPRE, LOGADO OU NÃO
+    function esconderLoader() {
+      const loader = document.getElementById('loader-container')
+      if (loader) loader.style.display = 'none'
+    }
+
+    // Esconde loader depois de 2s mesmo se der erro
+    setTimeout(esconderLoader, 2000)
+
+    // Login com Google
+    window.loginGoogle = async () => {
+      try {
+        const result = await signInWithPopup(auth, provider)
+        usuarioLogado = result.user
+        document.getElementById('user-nome').textContent = usuarioLogado.displayName
+        document.getElementById('btn-login').style.display = 'none'
+        document.getElementById('btn-logout').style.display = 'inline-block'
+        carregarDados()
+      } catch (error) {
+        console.error(error)
+        alert('Erro no login: ' + error.message)
+        esconderLoader()
+      }
+    }
+
+    // Logout
+    window.logoutGoogle = async () => {
+      await signOut(auth)
+      usuarioLogado = null
+      document.getElementById('user-nome').textContent = ''
+      document.getElementById('btn-login').style.display = 'inline-block'
+      document.getElementById('btn-logout').style.display = 'none'
+    }
+
+    // CORREÇÃO 2: Verifica login e SEMPRE esconde o loader
+    onAuthStateChanged(auth, user => {
+      esconderLoader()
+      if (user) {
+        usuarioLogado = user
+        document.getElementById('user-nome').textContent = usuarioLogado.displayName
+        document.getElementById('btn-login').style.display = 'none'
+        document.getElementById('btn-logout').style.display = 'inline-block'
+        carregarDados()
+      }
+    })
+
+    // Salvar Receita
+    window.enviarfatura = async () => {
+      if (!usuarioLogado) {
+        alert('Faz login primeiro')
+        return loginGoogle()
+      }
+
+      const valores = [10,11,12,13,14,15,16,17,18].map(id => Number(document.getElementById(id).value) || 0)
+      const total = valores.reduce((a,b) => a+b, 0)
+
+      if (total === 0) {
+        alert('Preenche pelo menos um campo de receita')
+        return
+      }
+
+      await addDoc(collection(db, "receitas"), {
+        userId: usuarioLogado.uid,
+        valores: valores,
+        total: total,
+        data: new Date().toISOString(),
+        timestamp: Date.now()
+      })
+      
+      alert('Receita salva na nuvem!')
+      valores.forEach((v,i) => document.getElementById(10+i).value = '')
+      carregarDados()
+    }
+
+    // Salvar Despesa
+    window.enviardivida = async () => {
+      if (!usuarioLogado) {
+        alert('Faz login primeiro')
+        return loginGoogle()
+      }
+
+      const valores = [2,3,4,5,6,7,8,9].map(id => Number(document.getElementById(id).value) || 0)
+      const total = valores.reduce((a,b) => a+b, 0)
+
+      if (total === 0) {
+        alert('Preenche pelo menos um campo de despesa')
+        return
+      }
+
+      await addDoc(collection(db, "despesas"), {
+        userId: usuarioLogado.uid,
+        valores: valores,
+        total: total,
+        data: new Date().toISOString(),
+        timestamp: Date.now()
+      })
+      
+      alert('Despesa salva na nuvem!')
+      valores.forEach((v,i) => document.getElementById(2+i).value = '')
+      carregarDados()
+    }
+
+    // Carregar dados e atualizar gráfico
+    async function carregarDados() {
+      if (!usuarioLogado) return
+      
+      try {
+        const qReceitas = query(collection(db, "receitas"), where("userId", "==", usuarioLogado.uid), orderBy("timestamp", "desc"))
+        const qDespesas = query(collection(db, "despesas"), where("userId", "==", usuarioLogado.uid), orderBy("timestamp", "desc"))
+        
+        const [snapReceitas, snapDespesas] = await Promise.all([getDocs(qReceitas), getDocs(qDespesas)])
+        
+        let dadosReceitas = [], dadosDespesas = []
+        snapReceitas.forEach(doc => dadosReceitas.push(doc.data()))
+        snapDespesas.forEach(doc => dadosDespesas.push(doc.data()))
+        
+        atualizarGrafico(dadosReceitas, dadosDespesas)
+      } catch (error) {
+        console.error('Erro ao carregar:', error)
+      }
+    }
+
+    function atualizarGrafico(receitas, despesas) {
+      const canvas = document.getElementById('graficoEvolucao')
+      if (!canvas) return
+      const ctx = canvas.getContext('2d')
+      
+      if (chartInstance) chartInstance.destroy()
+      
+      const labels = receitas.map(r => new Date(r.data).toLocaleDateString('pt-BR')).reverse()
+      const dataReceitas = receitas.map(r => r.total).reverse()
+      const dataDespesas = despesas.map(d => d.total).reverse()
+      
+      chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            { label: 'Receitas', data: dataReceitas, borderColor: '#00A3FF', backgroundColor: 'rgba(0,163,255,0.1)', tension: 0.4 },
+            { label: 'Despesas', data: dataDespesas, borderColor: '#ff4444', backgroundColor: 'rgba(255,68,68,0.1)', tension: 0.4 }
+          ]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+      })
+    }
+
+    // Navegação entre seções
+    window.showSection = (id) => {
+      document.querySelectorAll('section.financeira').forEach(s => s.style.display = 'none')
+      const secao = document.getElementById(id)
+      if (secao) secao.style.display = 'block'
+    }
+
+    // Calculadora
+    window.abrirCalculadora = () => document.getElementById('calculadora-modal').style.display = 'block'
+    window.fecharCalculadora = () => document.getElementById('calculadora-modal').style.display = 'none'
+    window.inserir = (val) => {
+      const res = document.getElementById('calc-resultado')
+      res.value = res.value === '0' ? val : res.value + val
+    }
+    window.limparCalc = () => document.getElementById('calc-resultado').value = '0'
+    window.apagarUltimo = () => {
+      const res = document.getElementById('calc-resultado')
+      res.value = res.value.slice(0, -1) || '0'
+    }
+    window.calcular = () => {
+      const res = document.getElementById('calc-resultado')
+      try { res.value = eval(res.value) } catch { res.value = 'Erro' }
+    }
+
+    // Resetar tudo
+    window.reiniciarTudo = async () => {
+      if (!usuarioLogado) return alert('Faz login primeiro')
+      if (!confirm('Apagar todos os dados?')) return
+      
+      const collections = ['receitas', 'despesas', 'investimentos', 'lazer', 'imoveis', 'automoveis']
+      for (let col of collections) {
+        const q = query(collection(db, col), where("userId", "==", usuarioLogado.uid))
+        const snap = await getDocs(q)
+        snap.forEach(async doc => await deleteDoc(doc.ref))
+      }
+      alert('Dados apagados')
+      carregarDados()
+    }
+
+    // Placeholder das outras funções
+    window.adicionarInvestimento = () => alert('Função em desenvolvimento')
+    window.adicionarLazer = () => alert('Função em desenvolvimento')
+    window.adicionarImovel = () => alert('Função em desenvolvimento')
+    window.adicionarAutomovel = () => alert('Função em desenvolvimento')
+    window.filtrarDia = () => alert('Filtro em desenvolvimento')
+    window.filtrarSemana = () => alert('Filtro em desenvolvimento')
+    window.filtrarMes = () => alert('Filtro em desenvolvimento')
+
+    // CORREÇÃO 3: INICIA NA SEÇÃO INICIO E ESCONDE LOADER
+    document.addEventListener('DOMContentLoaded', () => {
+      showSection('inicio')
+      setTimeout(esconderLoader, 2000)
+    })
+  </script>
+</body>
 </html>
